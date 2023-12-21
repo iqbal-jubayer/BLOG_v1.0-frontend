@@ -1,0 +1,199 @@
+.navbar {
+    min-height: 5vh;
+    width: 100vw;
+    padding: 3px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-bg {
+    width: 100vw;
+    min-height: 6vh;
+    background-image: linear-gradient(to right bottom, rgb(255, 68, 100), rgb(255, 192, 203));
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* <--Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    cursor: pointer;
+}
+
+.logo>* {
+    margin: 0 3px
+}
+
+.logo-img img {
+    width: 30px;
+    border: 2px solid black;
+    border-radius: 25px;
+}
+
+.logo-text h3 a {
+    text-decoration: none;
+    color: white;
+}
+/* Logo--> */
+
+/* <--Burger */
+.burger-container{
+    display: flex;
+    align-items: center;
+    position: fixed;
+    right: 10px;
+}
+.burger-title{
+    color: white;
+    padding: 10px;
+}
+
+.burger {
+    background: rgba(0, 0, 0, 0) url("../../static/blank-profile.png");
+    background-size: contain;
+    background-blend-mode: darken;
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.burger:hover {
+    background: rgba(0, 0, 0, 0.2) url("../../static/blank-profile.png");
+    background-size: contain;
+    background-blend-mode: darken;
+}
+/* Burger--> */
+
+/* <--Searchbar */
+.searchbar {
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
+
+.searchbar input {
+    width: 40vw;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 2px solid gray;
+    border-radius: 21px;
+    padding: 6px 10px;
+    outline: none;
+}
+
+.searchbar input:focus {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.search-btn {
+    font-size: 10px;
+    width: 30px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border-radius: 3px;
+
+    position: relative;
+    right: 44px;
+    top: -1px;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    border: 1px solid gray;
+
+}
+/* Searchbar--> */
+
+/* <--Navigation Buttons */
+.nav-list {
+    background-image: linear-gradient(to top, rgb(255, 68, 100), pink);
+    position: fixed;
+    right: 0;
+    top: 6vh;
+    min-height: 30vh;
+    width: 15vw;
+    translate: 20vw;
+    transition: translate 0.3s ease-in;
+    border-radius: 0 0 0 20px;
+    z-index: 1;
+}
+
+.nav-list-active {
+    translate: 0;
+}
+
+.nav-list ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-list ul li {
+    list-style: none;
+    margin: 10px 0;
+}
+
+.nav-list ul li a {
+    width: 100px;
+    height: 30px;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-list ul li a:hover {
+    background-color: rgb(100, 100, 255);
+}
+/* Navigation Buttons--> */
+
+/* <--Add Blog Button */
+#AddBlog{
+    width: 70px;
+    height: 70px;
+    position: fixed;
+    bottom: 10vh;
+    right: 5vw;
+    background-image: url('../../static/add_logo.png');
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid gray;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1;
+}
+/* Add Blog Button--> */
+
+/* <--Session System */
+.sign-system {
+    position: fixed;
+    right: 5px;
+}
+
+.sign-system ul {
+    display: flex;
+}
+
+.sign-system ul li {
+    list-style: none;
+    margin: 0 2px;
+}
+
+.sign-system ul a {
+    width: 100px;
+    height: 30px;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Session System--> */

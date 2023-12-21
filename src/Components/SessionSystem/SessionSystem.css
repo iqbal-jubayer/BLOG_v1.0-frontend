@@ -1,0 +1,43 @@
+.signup {
+    height: 94vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-image: linear-gradient(to top right, rgba(255, 68, 100, 0.4), rgba(255, 192, 203, 0.3));
+    overflow-y: hidden;
+}
+
+.signin-items {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.sign-input p{
+    font-size: 11px;
+    text-align: center;
+    color: red;
+}
+
+.base-input {
+    outline: none;
+    padding: 3px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.signin-items>* {
+    margin: 0 5px;
+}
+
+.signin-btn {
+    text-align: center;
+}
+
+.signin-btn button {
+    width: 100px;
+    height: 30px;
+}

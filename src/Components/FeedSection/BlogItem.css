@@ -1,0 +1,46 @@
+.blogitem{
+    background-color: rgb(255, 131, 152,0.4);
+    border-radius: 15px;
+    margin: 10px;
+    display: flex;
+    max-height: 150px;
+    overflow: hidden;
+}
+
+.left-blogitem img{
+    width: 100px;
+    border-radius: 15px;
+}
+
+.left-blogitem{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.right-blogitem{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 15px;
+    width: 100%;
+}
+
+.title a{
+    text-decoration: none;
+    color: black;
+}
+
+.title{
+    margin: 5px 0;
+}
+
+.right-blogitem p{
+    color: black;
+}
+
+.auther-infosss{
+    margin-top: auto;
+    margin-left: auto;
+    margin-bottom: 5px;
+}
+

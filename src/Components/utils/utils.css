@@ -1,0 +1,16 @@
+.btn {
+    border: 2px solid white;
+    border-radius: 20px;
+    color: white;
+    background-color: blue;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.base-bg-1{
+    background-image: linear-gradient(to top right, rgba(255, 68, 100, 0.4), rgba(255, 192, 203, 0.3));
+}
+
+.base-bg-2{
+    background-color: rgb(255, 192, 203, 0.5);
+}
