@@ -20,7 +20,7 @@ const Navbar = (props) => {
 
 	const HandleAddBlog = () => {
 		if (isAuth) {
-			navigate(`/createblog/${user.username}`)
+			navigate(`/createblog`)
 		}
 	}
 
@@ -54,8 +54,8 @@ const Navbar = (props) => {
 						<div className="nav-list" >
 							<ul>
 								<li><Link className='btn' to={`/user/${user.username}`}>Accounts</Link></li>
-								<li><Link className='btn' to="/">Settings</Link></li>
-								<li><Link className='btn' to="/" onClick={HandleLogout}>Logout</Link></li>
+								<li><Link className='btn' to={`/settings/${user.username}`}>Settings</Link></li>
+								<li><a className='btn' href="/" onClick={HandleLogout}>Logout</a></li>
 							</ul>
 						</div>
 						{props.isAdd ? <div id='AddBlog' onClick={HandleAddBlog}></div> : ""}

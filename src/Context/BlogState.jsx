@@ -13,7 +13,7 @@ const BlogState = (props) => {
         }
 
         if (localStorage.getItem('auth-token') != null) {
-            await axios.post(`${process.env.REACT_APP_API}/auth/getuser`, {}, { headers: { "auth-token": localStorage.getItem('auth-token') } }).then(res => { setUser(res.data) })
+            await axios.post(`${process.env.REACT_APP_API}/auth/getuser`, {}, { headers: { "auth-token": localStorage.getItem('auth-token') } }).then(res => { setUser(res.data) }).catch(err=>{localStorage.removeItem('isAuth');localStorage.removeItem('auth-token');});
         }
     }
 

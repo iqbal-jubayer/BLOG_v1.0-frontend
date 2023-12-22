@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     
-    background-image: linear-gradient(to top right, rgba(255, 68, 100, 0.4), rgba(255, 192, 203, 0.3));
+    /* background-image: linear-gradient(to top right, rgba(255, 68, 100, 0.4), rgba(255, 192, 203, 0.3)); */
     overflow-y: hidden;
 }
 

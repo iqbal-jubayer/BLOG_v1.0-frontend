@@ -9,6 +9,7 @@ import SignIn from './Components/SessionSystem/SignIn';
 import SignUp from './Components/SessionSystem/SignUp';
 import AccountSection from './Components/AccountSection/AccountSection';
 import AddBlogSection from './Components/AddBlogSection/AddBlogSection';
+import Settings from './Components/AccountSection/Settings';
 
 import BlogState from './Context/BlogState'; // IMPORT STATE
 
@@ -44,7 +45,7 @@ function App() {
             ]} />
 
             {/* path="/createblog/:userID"  */}
-            <Route exact path='/createblog/:userID' element={
+            <Route exact path='/createblog' element={
               checkAuth() ? [<Navbar key={"Navbar"} isSearchBar={false} isAdd={false} />,
               <AddBlogSection key={"AddBlogSection"} />] : <Navigate to="/invalidauth" />
             } />
@@ -66,6 +67,14 @@ function App() {
               [<Navbar key={"Navbar"} isSearchBar={false} isSign={false} />,
               <AccountSection key={"AccountSection"} />]
             } />
+
+            {/* path="/settings/:userID" */}
+            <Route exact path="/settings/:userID" element={
+              checkAuth() ?
+                [<Navbar key={"Navbar"} isSearchBar={false} isSign={false} />,
+                <Settings key={"Settings"}/>]:<Navigate to={"invalidauth"}/>
+            } />
+
 
             {/* path="/invalidauth" */}
             <Route path="/invalidauth" element={<h1 style={{ textAlign: "center", margin: "30px", color: "red" }}>Error 401: Invalid Authentication</h1>} />

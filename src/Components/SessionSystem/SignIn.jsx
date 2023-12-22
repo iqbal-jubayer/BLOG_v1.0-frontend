@@ -1,9 +1,12 @@
 // IMPORT PACKAGES
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import validator from 'validator'
 
 import blogContext from '../../Context/BlogContext' // IMPORT CONTEXT
+
+import Alert from '../Alert/Alert'
 
 import './SessionSystem.css' // IMPORT CSS
 
@@ -12,9 +15,11 @@ const SignIn = () => {
   const { setIsAuth, checkAuthentication } = useContext(blogContext);
 
   const [user, setUser] = useState({
-    "email": "",
+    "username": "",
     "password": ""
-  })
+  });
+  const [isAlert, setIsAlert] = useState(false);
+  const [alertMsg, setAlertMsg] = useState("")
 
   const HandleChange = (e) => {
     let name = e.target.name;
@@ -22,31 +27,39 @@ const SignIn = () => {
     setUser({ ...user, [name]: value })
   }
 
-
   const HandleSignIn = async (e) => {
     e.preventDefault();
+    console.log(user);
     await axios.post(`${process.env.REACT_APP_API}/auth/signin`, user, { headers: { "Content-Type": "application/json" } }).then(res => {
-      // console.log(res)k
       setIsAuth(true)
       localStorage.setItem('isAuth', true);
       localStorage.setItem('auth-token', res.data);
       checkAuthentication();
       navigate('/');
     }).catch(err => {
-      console.log(err)
       let statusCode = err.response.status
       if (statusCode) {
-        alert(err.response.data);
-        setUser({ "email": user.email, "password": "" });
+        // alert(err.response.data);
+        setIsAlert(true);
+        setAlertMsg(err.response.data);
+        setUser({ "username": user.username, "password": "" });
       }
     });
+
   }
 
+  useEffect(()=>{
+    setInterval(()=>{
+      setIsAlert(false);
+    },5000);
+  },[setIsAlert])
+  
   return (
-    <div className='signup'>
+    <div className='signup base-bg-1'>
+      <Alert active={isAlert} msg={alertMsg} />
       <form method="post" onSubmit={HandleSignIn}>
-        <div className='signin-items'><label htmlFor="email">Email:</label><div className="sign-input"><input className='base-input' autoComplete='off' type="email" onChange={HandleChange} value={user.email} name='email' /></div></div>
-        <div className='signin-items'><label htmlFor="password">Password:</label><div className="sign-input"><input className='base-input' type="password" onChange={HandleChange} value={user.password} name='password' /></div></div>
+        <div className='signin-items'><div className="sign-input"><input className='base-input' autoComplete='off' type="text" placeholder='Email Address or Username' onChange={HandleChange} value={user.username} name='username' required /></div></div>
+        <div className='signin-items'><div className="sign-input"><input className='base-input' type="password" placeholder='Password'  onChange={HandleChange} value={user.password} name='password' minLength={6} required /></div></div>
         <div className="signin-btn"><button className='btn' type="submit">Sign In</button></div>
       </form>
     </div>

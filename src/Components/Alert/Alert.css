@@ -1,0 +1,19 @@
+.alert{
+    position: fixed;
+    top: 5vh;
+    width: 80vw;
+    height: 5vh;
+    border: 2px solid red;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 50px 50px;
+    translate: 0 -10vh;
+    transition: translate 0.5s;
+}
+
+.alert-active{
+    translate: 0;
+    transition: translate 0.5s;
+}

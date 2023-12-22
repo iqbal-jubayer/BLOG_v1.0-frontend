@@ -7,15 +7,17 @@ import blogContext from '../../Context/BlogContext' // IMPORT CONTEXT
 
 import './SessionSystem.css' // IMPORT CSS
 
+import Alert from '../Alert/Alert'
+
 const SignUp = () => {
 	const navigate = useNavigate();
 	const { checkAuthentication, setIsAuth } = useContext(blogContext);
 
-	const [isUserExist, setIsUserExist] = useState("");
-	const [isEmailExist, setIsEmailExist] = useState("");
-
 	const [userList, setUserList] = useState([]);
 	const [emailList, setEmailList] = useState([]);
+	const [isAlert, setIsAlert] = useState(false);
+	const [alertMsg, setAlertMsg] = useState("Alert")
+	const [isUsrnameUsed, setIsUsrnameUsed] = useState("")
 
 	const [user, setUser] = useState({
 		"name": "",
@@ -29,57 +31,68 @@ const SignUp = () => {
 		let value = e.target.value;
 		setUser({ ...user, [name]: value })
 		if (name === "username") {
-			if (value.length >= 5) {
-				if (userList.includes(value)) {
-					setIsUserExist("username already exist");
-				} else {
-					setIsUserExist("")
-				}
+			if (userList.includes(value)) {
+				setIsUsrnameUsed(true)
 			} else {
-				setIsUserExist("")
-			}
-		} else if (name === "email") {
-			if (value.includes("@")) {
-				if (emailList.includes(value)) {
-					setIsEmailExist("Email already used");
-				} else {
-					setIsEmailExist("")
-				}
-			} else {
-				setIsEmailExist("")
+				setIsUsrnameUsed(false)
 			}
 		}
 	}
 
 	const getEmailList = async () => {
-		await axios.post('http://localhost:5000/api/auth/getmeaillist').then(res => { setUserList(res.data["usernameList"]); setEmailList(res.data["emailList"]) }).catch(err => { console.log(err) })
+		await axios.post('http://localhost:5000/api/auth/getmeaillist').then(res => { setUserList(res.data["usernameList"]); setEmailList(res.data["emailList"]) }).catch(err => { console.log("Can't find userList and emailList") })
 	}
 
 	useEffect(() => {
 		getEmailList();
-	}, [])
+		if (isAlert) {
+			setTimeout(() => setIsAlert(false), 5000)
+		}
+	}, [isAlert])
 
 
 	const HandleSignUp = async (e) => {
 		e.preventDefault();
-		await axios.post(`${process.env.REACT_APP_API}/auth/createuser`, user, { headers: { "Content-Type": "application/json" } }).then(res => {
-			setIsAuth(true)
-			localStorage.setItem('isAuth', true);
-			localStorage.setItem('auth-token', res.data);
-			checkAuthentication();
-			navigate('/');
-		}).catch(err => {
-			alert(err.response.data);
-		});
+		if (userList.includes(user.username) || emailList.includes(user.email)) {
+			setAlertMsg("username or email address already used")
+			setIsAlert(true);
+			setUser({ ...user, "password": "" })
+		} else {
+			await axios.post(`${process.env.REACT_APP_API}/auth/createuser`, user, { headers: { "Content-Type": "application/json" } }).then(res => { 
+				setIsAuth(true)
+				localStorage.setItem('isAuth', true);
+				localStorage.setItem('auth-token', res.data);
+				checkAuthentication();
+				navigate('/');
+			})
+		}
 	}
 
 	return (
-		<div className='signup'>
+		<div className='signup base-bg-1'>
+			<Alert msg={alertMsg} active={isAlert} />
 			<form method="post" onSubmit={HandleSignUp}>
-				<div className='signin-items'><label htmlFor="name">Full Name:</label><div className="sign-input"><input className='base-input' type="text" autoComplete='off' onChange={HandleChange} value={user.name} name='name' /><p>*minimum 3 character long*</p></div></div>
-				<div className='signin-items'><label htmlFor="username">Username:</label><div className="sign-input"><input className='base-input' type="text" autoComplete='off' onChange={HandleChange} value={user.username} name='username' /><p>{isUserExist}</p><p>*minimum 5 character long*</p></div></div>
-				<div className='signin-items'><label htmlFor="email">Email:</label><div className="sign-input"><input className='base-input' type="email" autoComplete='off' onChange={HandleChange} value={user.email} name='email' /><p>{isEmailExist}</p></div></div>
-				<div className='signin-items'><label htmlFor="password">Password:</label><div className="sign-input"><input className='base-input' type="password" onChange={HandleChange} value={user.password} name='password' /><p>*minimum 6 character long*</p></div></div>
+				<div className='signin-items'>
+					<div className="sign-input">
+						<input className='base-input' type="text" placeholder='Fullname' autoComplete='off' onChange={HandleChange} value={user.name} name='name' minLength={3} required />
+					</div>
+				</div>
+				<div className='signin-items'>
+					<div className="sign-input">
+						<input className='base-input' type="text" placeholder='Username' autoComplete='off' onChange={HandleChange} value={user.username} name='username' minLength={5} required />
+						{isUsrnameUsed ? <p>username already used</p> : ""}
+					</div>
+				</div>
+				<div className='signin-items'>
+					<div className="sign-input">
+						<input className='base-input' type="email" placeholder='Email Address' autoComplete='off' onChange={HandleChange} value={user.email} name='email' required />
+					</div>
+				</div>
+				<div className='signin-items'>
+					<div className="sign-input">
+						<input className='base-input' type="password" placeholder='Password' onChange={HandleChange} value={user.password} name='password' minLength={6} required />
+					</div>
+				</div>
 				<div className="signin-btn"><button className='btn' type="submit">Sign Up</button></div>
 			</form>
 		</div>
