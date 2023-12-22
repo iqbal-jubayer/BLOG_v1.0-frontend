@@ -2,7 +2,7 @@
 import React from 'react'
 
 // IMPORT COMPONENTS
-import BlogItem from './BlogItem'
+import BlogItem from '../BlogItem/BlogItem'
 
 const MainFeed = (props) => {
   return (

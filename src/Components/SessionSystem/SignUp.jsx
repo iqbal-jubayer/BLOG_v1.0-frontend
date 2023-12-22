@@ -15,6 +15,7 @@ const SignUp = () => {
 
 	const [userList, setUserList] = useState([]);
 	const [emailList, setEmailList] = useState([]);
+	
 	const [isAlert, setIsAlert] = useState(false);
 	const [alertMsg, setAlertMsg] = useState("Alert")
 	const [isUsrnameUsed, setIsUsrnameUsed] = useState("")
