@@ -1,6 +1,7 @@
 import React from 'react'
 
 import BlogItem from '../BlogItem/BlogItem'
+
 const LeftSection = (props) => {
 
 	return (

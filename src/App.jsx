@@ -9,7 +9,7 @@ import SignIn from './Components/SessionSystem/SignIn';
 import SignUp from './Components/SessionSystem/SignUp';
 import AccountSection from './Components/AccountSection/AccountSection';
 import AddBlogSection from './Components/AddBlogSection/AddBlogSection';
-import Settings from './Components/AccountSection/Settings';
+import SettingsSection from './Components/SettingsSection/SettingsSection';
 
 import BlogState from './Context/BlogState'; // IMPORT STATE
 
@@ -72,7 +72,7 @@ function App() {
             <Route exact path="/settings/:userID" element={
               checkAuth() ?
                 [<Navbar key={"Navbar"} isSearchBar={false} isSign={false} />,
-                <Settings key={"Settings"}/>]:<Navigate to={"invalidauth"}/>
+                <SettingsSection key={"SettingsSection"}/>]:<Navigate to={"invalidauth"}/>
             } />
 
 

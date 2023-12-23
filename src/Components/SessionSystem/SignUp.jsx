@@ -15,7 +15,7 @@ const SignUp = () => {
 
 	const [userList, setUserList] = useState([]);
 	const [emailList, setEmailList] = useState([]);
-	
+
 	const [isAlert, setIsAlert] = useState(false);
 	const [alertMsg, setAlertMsg] = useState("Alert")
 	const [isUsrnameUsed, setIsUsrnameUsed] = useState("")
@@ -40,12 +40,10 @@ const SignUp = () => {
 		}
 	}
 
-	const getEmailList = async () => {
-		await axios.post('http://localhost:5000/api/auth/getmeaillist').then(res => { setUserList(res.data["usernameList"]); setEmailList(res.data["emailList"]) }).catch(err => { console.log("Can't find userList and emailList") })
-	}
-
 	useEffect(() => {
-		getEmailList();
+		const getEmailList = async () => {
+			await axios.post('http://localhost:5000/api/auth/getmeaillist').then(res => { setUserList(res.data["usernameList"]); setEmailList(res.data["emailList"]) }).catch(err => { console.log("Can't find userList and emailList") })
+		}; getEmailList();
 		if (isAlert) {
 			setTimeout(() => setIsAlert(false), 5000)
 		}
@@ -59,7 +57,7 @@ const SignUp = () => {
 			setIsAlert(true);
 			setUser({ ...user, "password": "" })
 		} else {
-			await axios.post(`${process.env.REACT_APP_API}/auth/createuser`, user, { headers: { "Content-Type": "application/json" } }).then(res => { 
+			await axios.post(`${process.env.REACT_APP_API}/auth/createuser`, user, { headers: { "Content-Type": "application/json" } }).then(res => {
 				setIsAuth(true)
 				localStorage.setItem('isAuth', true);
 				localStorage.setItem('auth-token', res.data);

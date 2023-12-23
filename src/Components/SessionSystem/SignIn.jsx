@@ -28,7 +28,6 @@ const SignIn = () => {
 
   const HandleSignIn = async (e) => {
     e.preventDefault();
-    console.log(user);
     await axios.post(`${process.env.REACT_APP_API}/auth/signin`, user, { headers: { "Content-Type": "application/json" } }).then(res => {
       setIsAuth(true)
       localStorage.setItem('isAuth', true);
@@ -36,29 +35,32 @@ const SignIn = () => {
       checkAuthentication();
       navigate('/');
     }).catch(err => {
-      let statusCode = err.response.status
-      if (statusCode) {
-        // alert(err.response.data);
-        setIsAlert(true);
-        setAlertMsg(err.response.data);
-        setUser({ "username": user.username, "password": "" });
+      if (err.response !== undefined) {
+        let statusCode = err.response.status
+        if (statusCode) {
+          setIsAlert(true);
+          setAlertMsg(err.response.data);
+          setUser({ "username": user.username, "password": "" });
+        }
+      } else {
+        console.log(err);
       }
     });
 
   }
 
-  useEffect(()=>{
-    setInterval(()=>{
+  useEffect(() => {
+    setInterval(() => {
       setIsAlert(false);
-    },5000);
-  },[setIsAlert])
-  
+    }, 5000);
+  }, [setIsAlert])
+
   return (
     <div className='signup base-bg-1'>
       <Alert active={isAlert} msg={alertMsg} />
       <form method="post" onSubmit={HandleSignIn}>
         <div className='signin-items'><div className="sign-input"><input className='base-input' autoComplete='off' type="text" placeholder='Email Address or Username' onChange={HandleChange} value={user.username} name='username' required /></div></div>
-        <div className='signin-items'><div className="sign-input"><input className='base-input' type="password" placeholder='Password'  onChange={HandleChange} value={user.password} name='password' minLength={6} required /></div></div>
+        <div className='signin-items'><div className="sign-input"><input className='base-input' type="password" placeholder='Password' onChange={HandleChange} value={user.password} name='password' minLength={6} required /></div></div>
         <div className="signin-btn"><button className='btn' type="submit">Sign In</button></div>
       </form>
     </div>

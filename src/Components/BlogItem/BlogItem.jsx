@@ -6,10 +6,9 @@ import './BlogItem.css'
 
 const BlogItem = (props) => {
   const [date, setDate] = useState(props.blog.date);
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     setDate(date.split("T")[0].split('-').reverse().join("/"));
-    
   }, [date])
 
   return (

@@ -1,6 +1,6 @@
 // IMPORT PACKAGES
 import axios from 'axios';
-import React, {useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 // IMPORT COMPONENTS
@@ -10,20 +10,20 @@ import SideBlogPost from './SideBlogPost'
 import './BlogPostSection.css' // IMPORT CSS
 
 const BlogPost = () => {
-  const {blogID} = useParams();
-  const [blog,setBlog] = useState([]);
-  
-  useEffect(()=>{
+  const { blogID } = useParams();
+  const [blog, setBlog] = useState([]);
+
+  useEffect(() => {
     axios.get(`${process.env.REACT_APP_API}/blog/${blogID}`)
-    .then(dat=>{setBlog(dat.data[0])})
-    .catch(err=>console.log(err))
+      .then(dat => { setBlog(dat.data[0]) })
+      .catch(err => console.log(err))
   })
 
   return (
     <div className='blog-post'>
-      <MainBlogPost blog={blog}/>
+      <MainBlogPost blog={blog} />
       <span id='blog-left-right-sep'></span>
-      <SideBlogPost/>
+      <SideBlogPost />
     </div>
   )
 }

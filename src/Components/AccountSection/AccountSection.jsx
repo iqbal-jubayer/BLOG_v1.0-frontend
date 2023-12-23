@@ -20,18 +20,17 @@ const AccountSection = () => {
   const [auther, setAuther] = useState({});
   const [isLogged, setLogged] = useState(false);
 
+
   useEffect(() => {
+    // Use Effect Function
     const getBlogs = async () => {
       await axios.get(`${process.env.REACT_APP_API}/blog/getblogs?auther=${userID}`).then(res => { setBlogs(res.data) });
-    };
-
+    }; getBlogs();
     const getAuther = async () => {
       try {
         await axios.post(`${process.env.REACT_APP_API}/auth/getauther?username=${userID}`).then(res => { setAuther(res.data) });
       } catch (err) { };
-    };
-    getAuther();
-    getBlogs();
+    }; getAuther();
     if (user.username === userID) { setLogged(true); };
   }, [user, userID]);
 
