@@ -1,5 +1,5 @@
-.blogitem{
-    background-color: rgb(255, 131, 152,0.4);
+.blogitem {
+    background-color: rgb(255, 131, 152, 0.4);
     border-radius: 15px;
     margin: 10px;
     display: flex;
@@ -7,40 +7,43 @@
     overflow: hidden;
 }
 
-.left-blogitem img{
+.left-blogitem img {
     width: 100px;
     border-radius: 15px;
 }
 
-.left-blogitem{
+.left-blogitem {
     padding: 5px;
     display: flex;
     align-items: center;
 }
 
-.right-blogitem{
+.right-blogitem {
     display: flex;
     flex-direction: column;
     padding: 10px 15px;
     width: 100%;
 }
 
-.title a{
+.desc {
+    width: 80%;
+}
+
+.title a {
     text-decoration: none;
     color: black;
 }
 
-.title{
+.title {
     margin: 5px 0;
 }
 
-.right-blogitem p{
+.right-blogitem p {
     color: black;
 }
 
-.auther-infosss{
+.auther-infosss {
     margin-top: auto;
     margin-left: auto;
     margin-bottom: 5px;
 }
-

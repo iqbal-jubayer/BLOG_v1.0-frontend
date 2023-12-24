@@ -61,6 +61,8 @@ const SettingsSection = () => {
 		if (user.username !== undefined && user.username !== userID) {
 			window.location.replace("/invalidauth")
 		};
+
+		// <--API CALLS
 		const getEmailList = async () => {
 			await axios.post('http://localhost:5000/api/auth/getmeaillist')
 				.then((res) => {
@@ -72,6 +74,8 @@ const SettingsSection = () => {
 				.catch(err => { console.log("Can't find userList and emailList") })
 		}
 		getEmailList();
+		// API CALLS-->
+
 		setInterval(() => {
 			setIsAlert(false);
 		}, 5000);

@@ -14,10 +14,14 @@ const BlogPost = () => {
   const [blog, setBlog] = useState([]);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API}/blog/${blogID}`)
-      .then(dat => { setBlog(dat.data[0]) })
-      .catch(err => console.log(err))
-  })
+    // <--API CALLS
+    const getBlog = () => {
+      axios.get(`${process.env.REACT_APP_API}/blog/${blogID}`)
+        .then(dat => { setBlog(dat.data[0]) })
+        .catch(err => console.log(err));
+    }; getBlog();
+    // API CALLS-->
+  }, [blogID]);
 
   return (
     <div className='blog-post'>

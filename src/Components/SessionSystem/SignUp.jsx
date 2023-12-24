@@ -41,9 +41,12 @@ const SignUp = () => {
 	}
 
 	useEffect(() => {
+		// <--API CALLS
 		const getEmailList = async () => {
 			await axios.post('http://localhost:5000/api/auth/getmeaillist').then(res => { setUserList(res.data["usernameList"]); setEmailList(res.data["emailList"]) }).catch(err => { console.log("Can't find userList and emailList") })
 		}; getEmailList();
+		// API CALLS-->
+
 		if (isAlert) {
 			setTimeout(() => setIsAlert(false), 5000)
 		}
