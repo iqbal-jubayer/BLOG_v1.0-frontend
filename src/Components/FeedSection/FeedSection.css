@@ -1,15 +1,16 @@
 /* <--MainFeed */
-.main-feed {
-    width: 80vw;
-    min-height: 94.3vh;
+.feed-main-section {
     position: absolute;
     right: 0;
+    width: 80vw;
+    min-height: 94.3vh;
     z-index: -1;
 }
+
 /* MainFeed--> */
 
 /* <--SideFeed */
-.side-feed {
+.feed-side-section {
     width: 20vw;
     height: 94.4vh;
     position: fixed;
@@ -17,7 +18,11 @@
     overflow: scroll;
 }
 
-.side-feed ul {
+.feed-side-section h3 {
+    color: black;
+}
+
+.feed-side-section ul {
     margin-top: 30px;
     padding: 0 30px;
     display: flex;
@@ -26,12 +31,12 @@
     align-items: flex-start;
 }
 
-.side-feed ul li {
+.feed-side-section ul li {
     margin: 5px;
     list-style: none;
 }
 
-.side-feed ul li a {
+.feed-side-section ul li a {
     text-align: center;
     text-decoration: none;
     color: black;
@@ -42,17 +47,26 @@
     align-items: center;
 }
 
-.side-feed ul li a:hover {
+.feed-side-section ul li a:hover {
     font-size: 17px;
 }
 
-.side-feed ul li a img {
-    width: 30px;
+.feed-side-section ul li a>* {
+    margin: 0 3px;
 }
+
+.feed-side-section ul li a img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border: 2px solid white;
+    border-radius: 23px;
+}
+
 /* SideFeed--> */
 
 
-
+/* <--Design */
 #feed-left-right-sep {
     width: 3px;
     height: 94.4vh;
@@ -61,3 +75,5 @@
     margin-top: 2px;
     left: 20vw;
 }
+
+/* Design--> */

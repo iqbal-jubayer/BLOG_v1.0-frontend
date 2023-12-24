@@ -1,4 +1,4 @@
-.signup {
+.sign {
     height: 94vh;
 
     display: flex;
@@ -9,7 +9,7 @@
     overflow-y: hidden;
 }
 
-.signin-items {
+.sign-items {
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
@@ -21,11 +21,11 @@
     color: red;
 }
 
-.signin-items>* {
+.sign-items>* {
     margin: 0 5px;
 }
 
-.signin-btn{
+.sign-btn{
     display: flex;
     justify-content: center;
 }

@@ -6,7 +6,7 @@ import BlogItem from '../BlogItem/BlogItem'
 
 const MainFeed = (props) => {
   return (
-    <div className="main-feed base-bg-1">
+    <div className="feed-main-section base-bg-1">
       {props.blogs.map((e) => (
         <BlogItem key={e._id} blog={e} />
       ))}

@@ -25,25 +25,23 @@
     width: 100%;
 }
 
-.desc {
+.blogitem-desc {
     width: 80%;
 }
+.blogitem-title {
+    margin: 5px 0;
+}
 
-.title a {
+.blogitem-title a {
     text-decoration: none;
     color: black;
 }
 
-.title {
-    margin: 5px 0;
-}
 
 .right-blogitem p {
     color: black;
 }
 
-.auther-infosss {
-    margin-top: auto;
-    margin-left: auto;
-    margin-bottom: 5px;
+.blogitem-auther-info {
+    margin: auto 0 5px auto;
 }

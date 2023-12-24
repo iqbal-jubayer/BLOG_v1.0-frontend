@@ -1,6 +1,7 @@
 // IMPORT PACKAGES
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
+import axios from 'axios'
 
 // IMPORT COMPONENTS
 import SideFeed from './SideFeed'
@@ -11,15 +12,25 @@ import blogContext from '../../Context/BlogContext' // IMPORT CONTEXT
 import './FeedSection.css' // IMPORT CSS
 
 const Main = () => {
-  const { blogs } = useContext(blogContext);
+  const { isAuth, blogs } = useContext(blogContext);
+
+  const [following, setFollowing] = useState([])
+
+  useEffect(() => {
+    const getFollowing = async () => {
+      await axios.post(`${process.env.REACT_APP_API}/auth/getfollowing`, {}, { headers: { 'auth-token': localStorage.getItem('auth-token') } }).then(res => setFollowing(res.data)).catch(err => console.log(err));
+    }; if(isAuth)getFollowing();
+    console.log(process.env.REACT_APP_API);
+  }, [isAuth])
+
   return (
     <div className="feed-section">
 
-      <SideFeed />
+      <SideFeed following={following} />
       <span id='feed-left-right-sep'></span>
       <MainFeed blogs={blogs} />
     </div>
   )
 }
 
-export default Main
+export default Main;

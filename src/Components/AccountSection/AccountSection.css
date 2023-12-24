@@ -1,33 +1,28 @@
-.account-section {
-    background-color: red;
-    display: flex;
-}
-
-.left-section {
+.account-main-section {
+    width: 80vw;
+    height: 94vh;    
     position: absolute;
     left: 0;
-    width: 80vw;
-    overflow: scroll;
-    height: 94vh;
     z-index: -1;
 }
 
-.left-section h2 {
+.account-main-section h2,
+.no-blog-text {
     text-align: center;
     padding: 30px;
 }
 
-.right-section {
-    position: fixed;
-    right: 0;
+.account-side-section {
     width: 20vw;
     height: 94vh;
+    position: fixed;
+    right: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.auther-info{
+.account-auther-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,13 +30,13 @@
     padding: 50px 0;
 }
 
-.dp-container {
+.account-dp-container {
     display: flex;
     border: 3px solid green;
     border-radius: 100px;
 }
 
-.dp-container img{
+.account-dp-container img {
     width: 150px;
     height: 150px;
     object-fit: cover;
@@ -54,10 +49,10 @@
     border-radius: 100px;
 }
 
-.username-container{
+.account-username-container {
     padding: 10px 0;
 }
 
-.auther-info-items{
+.account-auther-info-items {
     margin: 5px 0;
 }

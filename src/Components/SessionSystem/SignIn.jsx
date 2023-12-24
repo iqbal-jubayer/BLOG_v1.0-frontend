@@ -5,9 +5,12 @@ import axios from 'axios'
 
 import blogContext from '../../Context/BlogContext' // IMPORT CONTEXT
 
-import Alert from '../Alert/Alert'
 
 import './SessionSystem.css' // IMPORT CSS
+
+// IMPORT COMPONENTS
+import Signitems from './Signitems'
+import Alert from '../Alert/Alert'
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -28,6 +31,7 @@ const SignIn = () => {
 
   const HandleSignIn = async (e) => {
     e.preventDefault();
+    // API CALL
     await axios.post(`${process.env.REACT_APP_API}/auth/signin`, user, { headers: { "Content-Type": "application/json" } }).then(res => {
       setIsAuth(true)
       localStorage.setItem('isAuth', true);
@@ -56,12 +60,15 @@ const SignIn = () => {
   }, [setIsAlert])
 
   return (
-    <div className='signup base-bg-1'>
+    <div className='sign base-bg-1'>
       <Alert active={isAlert} msg={alertMsg} />
       <form method="post" onSubmit={HandleSignIn}>
-        <div className='signin-items'><div className="sign-input"><input className='base-input' autoComplete='off' type="text" placeholder='Email Address or Username' onChange={HandleChange} value={user.username} name='username' required /></div></div>
-        <div className='signin-items'><div className="sign-input"><input className='base-input' type="password" placeholder='Password' onChange={HandleChange} value={user.password} name='password' minLength={6} required /></div></div>
-        <div className="signin-btn"><button className='btn' type="submit">Sign In</button></div>
+        <Signitems type="text" placeholder="Email Address or Username" HandleChange={HandleChange} value={user.username} name="username" />
+        <Signitems type="password" placeholder="Password" HandleChange={HandleChange} value={user.password} name="password" minLength={6} />
+        <div className="sign-btn">
+          <button className='btn' type="submit">Sign In</button>
+        </div>
+
       </form>
     </div>
   )

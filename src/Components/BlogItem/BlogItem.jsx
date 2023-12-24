@@ -16,9 +16,9 @@ const BlogItem = (props) => {
     <div className='blogitem'>
       <div className="left-blogitem"><Link to={`/blogs/${props.blog._id}`}><img src={logo} alt="" /></Link></div>
       <div className="right-blogitem">
-        <h3 className="title"><Link to={`/blogs/${props.blog._id}`}>{props.blog.title}</Link></h3>
-        <div className="desc">{htmlToText(props.blog.description)}</div>
-        <div className="auther-infosss">By: <a href={`/user/${props.blog.auther}`}>{props.blog.auther}</a> on: {date}</div>
+        <h3 className="blogitem-title"><Link to={`/blogs/${props.blog._id}`}>{props.blog.title}</Link></h3>
+        <div className="blogitem-desc">{htmlToText(props.blog.description)}</div>
+        <div className="blogitem-auther-info">By: <Link to={`/user/${props.blog.auther}`}>{props.blog.auther}</Link> on: {date}</div>
       </div>
     </div>
   )

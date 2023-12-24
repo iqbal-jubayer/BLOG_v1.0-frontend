@@ -40,7 +40,7 @@ const AccountSection = () => {
   return (
     <div className='account-section'>
       <LeftSection blogs={blogs} />
-      <RightSection auther={auther} isLogged={isLogged} />
+      <RightSection auther={auther} user={user} isLogged={isLogged} />
     </div>
   );
 };

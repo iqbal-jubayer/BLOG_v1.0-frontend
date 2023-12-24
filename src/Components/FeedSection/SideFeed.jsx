@@ -2,14 +2,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-// IMPORT STATICS
-import home_logo from '../../static/home.png'
+const SideFeed = (props) => {
+  const arrayDataItems = props.following.map((e,index)=>(
+    <li key={index}><Link to={`/user/${e.username}`}><img src={e.dpURL} alt="logo" /><h3>{e.username}</h3></Link></li>
+  ));
 
-const SideFeed = () => {
   return (
-    <div className="side-feed base-bg-2">
+    <div className="feed-side-section base-bg-2">
       <ul>
-        <li><Link to="/"><img src={home_logo} alt="logo" /><h3>Feed</h3></Link></li>
+        <h3>Following</h3>
+        {arrayDataItems}
       </ul>
     </div>
   )
