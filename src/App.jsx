@@ -1,5 +1,5 @@
 // IMPORT PACKAGES
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // IMPORT COMPONETNS
 import Navbar from './Components/Navbar/Navbar';
@@ -19,19 +19,11 @@ import './Components/utils/utils.css'
 
 function App() {
 
-  const checkAuth = () => {
-    if (localStorage.getItem('isAuth') !== null) {
-      return true;
-    }
-    return false
-  }
-
   return (
     <>
       <BlogState>
         <BrowserRouter>
           <Routes>
-
             {/* path="/" */}
             <Route exact path='/' element={[
               <Navbar key={"Navbar"} />,
@@ -46,8 +38,8 @@ function App() {
 
             {/* path="/createblog/:userID"  */}
             <Route exact path='/createblog' element={
-              checkAuth() ? [<Navbar key={"Navbar"} isSearchBar={false} isAdd={false} />,
-              <AddBlogSection key={"AddBlogSection"} />] : <Navigate to="/invalidauth" />
+              [<Navbar key={"Navbar"} isSearchBar={false} isAdd={false} />,
+              <AddBlogSection key={"AddBlogSection"} />]
             } />
 
             {/* path="/signin" */}
@@ -70,9 +62,8 @@ function App() {
 
             {/* path="/settings/:userID" */}
             <Route exact path="/settings/:userID" element={
-              checkAuth() ?
-                [<Navbar key={"Navbar"} isSearchBar={false} isSign={false} />,
-                <SettingsSection key={"SettingsSection"}/>]:<Navigate to={"invalidauth"}/>
+              [<Navbar key={"Navbar"} isSearchBar={false} isSign={false} />,
+              <SettingsSection key={"SettingsSection"} />]
             } />
 
 

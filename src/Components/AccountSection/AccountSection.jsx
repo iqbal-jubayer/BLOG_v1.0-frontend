@@ -20,9 +20,20 @@ const AccountSection = () => {
   const [auther, setAuther] = useState({});
   const [isLogged, setLogged] = useState(false);
 
+  const HandleDelete = async (blog) => {
+    const del = window.confirm('Do you want to delete?');
+    if (del) {
+      await axios.post(`${process.env.REACT_APP_API}/blog/deleteblog`, {}, { headers: { 'auth-token': localStorage.getItem('auth-token'), "blog-id": blog._id } })
+        .then(res => {
+          setBlogs(blogs.filter(e=>{return e != blog}));
+        })
+        .catch(err => console.log(err));
+    }
+  }
+
 
   useEffect(() => {
-    
+
     // <--API CALLS
     const getBlogs = async () => {
       await axios.get(`${process.env.REACT_APP_API}/blog/getblogs?auther=${userID}`).then(res => { setBlogs(res.data) });
@@ -34,12 +45,14 @@ const AccountSection = () => {
     }; getAuther();
     // API CALLS-->
 
+
+
     if (user.username === userID) { setLogged(true); };
   }, [user, userID]);
 
   return (
     <div className='account-section'>
-      <LeftSection blogs={blogs} />
+      <LeftSection blogs={blogs} HandleDelete={HandleDelete} />
       <RightSection auther={auther} user={user} isLogged={isLogged} />
     </div>
   );

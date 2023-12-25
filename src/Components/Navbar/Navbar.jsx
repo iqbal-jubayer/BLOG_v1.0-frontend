@@ -12,7 +12,7 @@ import NavigationButton from './NavigationButton'
 import Navlogo from './Navlogo'
 
 const Navbar = (props) => {
-	const { user, isAuth, setIsAuth } = useContext(blogContext);
+	const { user, setUser, isAuth, setIsAuth } = useContext(blogContext);
 
 	return (
 		<nav className="navbar">
@@ -22,7 +22,7 @@ const Navbar = (props) => {
 			{props.isSign && !isAuth ?
 				<Sessionbutton />
 				: props.isSign && isAuth ?
-					<NavigationButton user={user} isAuth={isAuth} setIsAuth={setIsAuth} isAdd={props.isAdd} />
+					<NavigationButton user={user} isAuth={isAuth} setIsAuth={setIsAuth} isAdd={props.isAdd} setUser={setUser} />
 					: ""}
 		</nav>
 	)

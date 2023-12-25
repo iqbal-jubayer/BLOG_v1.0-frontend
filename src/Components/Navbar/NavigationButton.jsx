@@ -11,10 +11,10 @@ const NavigationButton = (props) => {
 	}
 
 	const HandleLogout = () => {
-		localStorage.removeItem('isAuth');
-		localStorage.removeItem('auth-token');
 		props.setIsAuth(false);
 		props.setUser({})
+		localStorage.removeItem('isAuth');
+		localStorage.removeItem('auth-token');
 	}
 
 	const toggleNavList = (e) => {

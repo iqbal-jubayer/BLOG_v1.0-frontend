@@ -28,8 +28,14 @@
 .blogitem-desc {
     width: 80%;
 }
+
 .blogitem-title {
     margin: 5px 0;
+    display: flex;
+}
+
+.blogitem-title a{
+    width: 100%;
 }
 
 .blogitem-title a {
@@ -44,4 +50,28 @@
 
 .blogitem-auther-info {
     margin: auto 0 5px auto;
+}
+
+.blogitem-ctrl {
+    display: flex;
+}
+
+.blogitem-ctrl>* {
+    margin: 0 10px;
+}
+
+#edit-btn, #delete-btn{
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#edit-btn {
+    background-image: url("../../static/edit_logo.png");
+}
+
+#delete-btn {
+    background-image: url("../../static/delete_logo.png");
 }

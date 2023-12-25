@@ -19,13 +19,11 @@ const Main = () => {
   useEffect(() => {
     const getFollowing = async () => {
       await axios.post(`${process.env.REACT_APP_API}/auth/getfollowing`, {}, { headers: { 'auth-token': localStorage.getItem('auth-token') } }).then(res => setFollowing(res.data)).catch(err => console.log(err));
-    }; if(isAuth)getFollowing();
-    console.log(process.env.REACT_APP_API);
+    }; if (isAuth) getFollowing();
   }, [isAuth])
 
   return (
     <div className="feed-section">
-
       <SideFeed following={following} />
       <span id='feed-left-right-sep'></span>
       <MainFeed blogs={blogs} />
