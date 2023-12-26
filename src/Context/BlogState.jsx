@@ -13,26 +13,26 @@ const BlogState = (props) => {
         }
 
         if (localStorage.getItem('auth-token') != null) {
-            await axios.post(`${process.env.REACT_APP_API}/auth/getuser`, {}, { headers: { "auth-token": localStorage.getItem('auth-token') } }).then(res => { setUser(res.data) }).catch(err=>{localStorage.removeItem('isAuth');localStorage.removeItem('auth-token');});
+            await axios.post(`${process.env.REACT_APP_API}/auth/getuser`, {}, { headers: { "auth-token": localStorage.getItem('auth-token') } }).then(res => { setUser(res.data) }).catch(err => { localStorage.removeItem('isAuth'); localStorage.removeItem('auth-token'); });
         }
     }
 
     const getBlogs = () => {
         axios.get(`${process.env.REACT_APP_API}/blog/getblogs`)
-            .then(blog => { setBlogs(blog.data)})
+            .then(blog => { setBlogs(blog.data); })
             .catch(err => console.log(err))
 
     }
 
-    useLayoutEffect(()=>{
+    useLayoutEffect(() => {
         checkAuthentication();
-    },[])
-    
+    }, [])
+
     useEffect(() => {
         getBlogs();
     }, [])
 
-    const values = { blogs, setBlogs, user, setUser, isAuth, setIsAuth, checkAuthentication };
+    const values = { blogs, setBlogs, user, setUser, isAuth, setIsAuth, checkAuthentication, getBlogs };
 
     return (
         <blogContext.Provider value={values}>

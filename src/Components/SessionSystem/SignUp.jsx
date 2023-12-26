@@ -41,7 +41,7 @@ const SignUp = () => {
 			}
 		}
 	}
-	
+
 	const HandleSignUp = async (e) => {
 		e.preventDefault();
 		if (userList.includes(user.username) || emailList.includes(user.email)) {
@@ -62,7 +62,7 @@ const SignUp = () => {
 	useEffect(() => {
 		// <--API CALLS
 		const getEmailList = async () => {
-			await axios.post(`${process.env.REACT_APP_API}/auth/getmeaillist`).then(res => { setUserList(res.data["usernameList"]); setEmailList(res.data["emailList"]) }).catch(err => { console.log("Can't find userList and emailList") })
+			await axios.post(`${process.env.REACT_APP_API}/auth/getemaillist`).then(res => { setUserList(res.data["usernameList"]); setEmailList(res.data["emailList"]) }).catch(err => { console.log("Can't find userList and emailList") })
 		}; getEmailList();
 		// API CALLS-->
 

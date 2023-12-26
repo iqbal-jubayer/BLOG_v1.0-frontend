@@ -25,7 +25,7 @@ const AccountSection = () => {
     if (del) {
       await axios.post(`${process.env.REACT_APP_API}/blog/deleteblog`, {}, { headers: { 'auth-token': localStorage.getItem('auth-token'), "blog-id": blog._id } })
         .then(res => {
-          setBlogs(blogs.filter(e=>{return e != blog}));
+          setBlogs(blogs.filter(e=>{return e !== blog}));
         })
         .catch(err => console.log(err));
     }

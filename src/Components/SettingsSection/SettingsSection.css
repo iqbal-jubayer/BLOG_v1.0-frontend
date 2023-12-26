@@ -1,0 +1,43 @@
+.settings-section {
+    display: flex;
+    justify-content: center;
+    height: 94vh;
+}
+
+.inner-settings-section {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.settings-item {
+    margin: 25px;
+}
+
+.settings-item h2 {
+    text-align: center;
+}
+
+
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.settings-form-items {
+    margin: 5px;
+}
+
+.settings-form-items img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border: 2px solid white;
+    border-radius: 250px;
+}
+
+.settings-form-items img:hover #img-edit-btn{
+    background-color: gray;
+}
