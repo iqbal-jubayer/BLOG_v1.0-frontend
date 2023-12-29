@@ -19,6 +19,7 @@ const Main = () => {
   useEffect(() => {
     const getFollowing = async () => {
       await axios.post(`${process.env.REACT_APP_API}/auth/getfollowing`, {}, { headers: { 'auth-token': localStorage.getItem('auth-token') } }).then(res => setFollowing(res.data)).catch(err => console.log(err));
+
     }; if (isAuth) getFollowing();
   }, [isAuth])
 

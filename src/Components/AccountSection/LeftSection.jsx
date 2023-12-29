@@ -1,8 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
 import BlogItem from '../BlogItem/BlogItem'
-
-import blogContext from '../../Context/BlogContext'
 
 const LeftSection = (props) => {
 	return (

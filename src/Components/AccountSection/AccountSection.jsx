@@ -14,7 +14,7 @@ import './AccountSection.css'; // IMPORT CSS
 const AccountSection = () => {
   const { userID } = useParams();
 
-  const { user } = useContext(blogContext);
+  const { user, getBlogs } = useContext(blogContext);
 
   const [blogs, setBlogs] = useState([]);
   const [auther, setAuther] = useState({});
@@ -25,7 +25,8 @@ const AccountSection = () => {
     if (del) {
       await axios.post(`${process.env.REACT_APP_API}/blog/deleteblog`, {}, { headers: { 'auth-token': localStorage.getItem('auth-token'), "blog-id": blog._id } })
         .then(res => {
-          setBlogs(blogs.filter(e=>{return e !== blog}));
+          setBlogs(blogs.filter(e => { return e !== blog }));
+          getBlogs();
         })
         .catch(err => console.log(err));
     }
@@ -40,7 +41,9 @@ const AccountSection = () => {
     }; getBlogs();
     const getAuther = async () => {
       try {
-        await axios.post(`${process.env.REACT_APP_API}/auth/getauther?username=${userID}`).then(res => { setAuther(res.data) });
+        await axios.post(`${process.env.REACT_APP_API}/auth/getuserinfo`, {
+          filter: { username: userID }, query: []
+        }).then(res => { setAuther(res.data) });
       } catch (err) { };
     }; getAuther();
     // API CALLS-->
