@@ -23,6 +23,7 @@ const SignIn = () => {
   const [isAlert, setIsAlert] = useState(false);
   const [alertMsg, setAlertMsg] = useState("")
 
+  // <--HANDLE FUNCTION
   const HandleChange = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -52,6 +53,7 @@ const SignIn = () => {
     });
 
   }
+  // HANDLE FUNCTION-->
 
   useEffect(() => {
     setInterval(() => {

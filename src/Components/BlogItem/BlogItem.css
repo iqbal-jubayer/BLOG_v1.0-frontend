@@ -69,9 +69,9 @@
 }
 
 #edit-btn {
-    background-image: url("../../static/edit_logo.png");
+    background-image: url("../../static/imgs/edit_logo.png");
 }
 
 #delete-btn {
-    background-image: url("../../static/delete_logo.png");
+    background-image: url("../../static/imgs/delete_logo.png");
 }

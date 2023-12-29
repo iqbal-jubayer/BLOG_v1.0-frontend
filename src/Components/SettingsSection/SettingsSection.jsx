@@ -11,6 +11,17 @@ import './SettingsSection.css'
 const SettingsSection = () => {
 	const { user, getBlogs } = useContext(blogContext);
 
+	const [tempUser, setTempUser] = useState({
+		name: "",
+		username: "",
+		dpURL: "",
+		email: ""
+	});
+	const [tempUserLoaded, setTempUserLoaded] = useState(false);
+	const [isAlert, setIsAlert] = useState(false);
+	const [alertMsg, setAlertMsg] = useState("");
+
+	// <--HANDLE FUNCTION
 	const HandleChange = (e) => {
 		let name = e.target.name;
 		let value = e.target.value;
@@ -27,20 +38,11 @@ const SettingsSection = () => {
 			})
 			.catch(err => console.log(err));
 	}
-
-	const [tempUser, setTempUser] = useState({
-		name: "",
-		username: "",
-		dpURL: "",
-		email: ""
-	});
-	const [tempUserLoaded, setTempUserLoaded] = useState(false);
-	const [isAlert, setIsAlert] = useState(false);
-	const [alertMsg, setAlertMsg] = useState("");
+	// HANDLE FUNCTION-->
 
 	useEffect(() => {
 		if (Object.keys(user).length !== 0 & !tempUserLoaded) {
-			setTempUser({...user});
+			setTempUser({ ...user });
 			setTempUserLoaded(true);
 		}
 

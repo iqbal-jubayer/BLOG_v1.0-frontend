@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 const NavigationButton = (props) => {
 	const navigate = useNavigate();
 
+	// <--HANDLE FUNCTION
 	const HandleAddBlog = () => {
 		if (props.isAuth) {
 			navigate(`/createblog`)
@@ -16,6 +17,7 @@ const NavigationButton = (props) => {
 		localStorage.removeItem('isAuth');
 		localStorage.removeItem('auth-token');
 	}
+	// HANDLE FUNCTION-->
 
 	const toggleNavList = (e) => {
 		document.querySelector('.nav-list').classList.toggle('nav-list-active')

@@ -56,7 +56,7 @@
 }
 
 .burger {
-    background: rgba(0, 0, 0, 0) url("../../static/blank-profile.png");
+    background: rgba(0, 0, 0, 0) url("../../static/imgs/blank-profile.png");
     background-size: contain;
     background-blend-mode: darken;
     width: 30px;
@@ -67,7 +67,7 @@
 }
 
 .burger:hover {
-    background: rgba(0, 0, 0, 0.2) url("../../static/blank-profile.png");
+    background: rgba(0, 0, 0, 0.2) url("../../static/imgs/blank-profile.png");
     background-size: contain;
     background-blend-mode: darken;
 }
@@ -150,7 +150,7 @@
     position: fixed;
     bottom: 10vh;
     right: 5vw;
-    background-image: url('../../static/add_logo.png');
+    background-image: url('../../static/imgs/add_logo.png');
     background-size: 80%;
     background-repeat: no-repeat;
     background-position: center;

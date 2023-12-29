@@ -1,13 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
-import logo from '../../static/blank-profile.png'
+import logo from '../../static/imgs/blank-profile.png'
 import { Link, useParams } from 'react-router-dom'
 import { htmlToText } from 'html-to-text'
 
 import './BlogItem.css'
 
 import blogContext from '../../Context/BlogContext'
-import axios from 'axios'
-// import { config } from 'dotenv'
 
 const BlogItem = (props) => {
   const [date, setDate] = useState(props.blog.date);
@@ -15,9 +13,11 @@ const BlogItem = (props) => {
   const { userID } = useParams();
   const [isCtrl, setIsCtrl] = useState(false);
 
+  // <--HANDLE FUNCTION
   const HandlEdit = () => {
     console.log("Edit");
   }
+  // HANDLE FUNCTION-->
 
   useEffect(() => {
     if (props.shouldCtrl) {
@@ -39,7 +39,7 @@ const BlogItem = (props) => {
           {isCtrl ?
             <div className="blogitem-ctrl">
               <div id='edit-btn' onClick={HandlEdit} ></div>
-              <div id='delete-btn' onClick={()=>props.HandleDelete(props.blog)} ></div>
+              <div id='delete-btn' onClick={() => props.HandleDelete(props.blog)} ></div>
             </div> : ""}
 
         </h3>

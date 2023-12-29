@@ -29,6 +29,7 @@ const SignUp = () => {
 		"password": ""
 	})
 
+	// <--HANDLE FUNCTION
 	const HandleChange = (e) => {
 		let name = e.target.name;
 		let value = e.target.value;
@@ -58,6 +59,7 @@ const SignUp = () => {
 			})
 		}
 	}
+	// HANDLE FUNCTION-->
 
 	useEffect(() => {
 		// <--API CALLS

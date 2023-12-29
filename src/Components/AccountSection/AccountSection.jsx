@@ -20,6 +20,8 @@ const AccountSection = () => {
   const [auther, setAuther] = useState({});
   const [isLogged, setLogged] = useState(false);
 
+  // <--HANDLE FUNCTION
+
   const HandleDelete = async (blog) => {
     const del = window.confirm('Do you want to delete?');
     if (del) {
@@ -31,6 +33,8 @@ const AccountSection = () => {
         .catch(err => console.log(err));
     }
   }
+
+  // HANDLE FUNCTION-->
 
 
   useEffect(() => {
@@ -47,8 +51,6 @@ const AccountSection = () => {
       } catch (err) { };
     }; getAuther();
     // API CALLS-->
-
-
 
     if (user.username === userID) { setLogged(true); };
   }, [user, userID]);

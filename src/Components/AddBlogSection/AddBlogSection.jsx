@@ -1,19 +1,16 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 import './AddBlogSection.css'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
 
 const AddBlogSection = () => {
-
-	const navigate = useNavigate();
-
 	const [blog, setBlog] = useState({
 		"title": "",
 		"topic": "General",
 		"description": ""
 	})
 
+	// <--HANDLE FUNCTION
 	const HandleChange = (e) => {
 		let name = e.target.name;
 		let value = e.target.value;
@@ -28,6 +25,7 @@ const AddBlogSection = () => {
 			.catch(err => { console.log(err) });
 		window.location.assign('/');
 	}
+	// HANDLE FUNCTION-->
 
 	return (
 		<div className='add-blog-section base-bg-1'>

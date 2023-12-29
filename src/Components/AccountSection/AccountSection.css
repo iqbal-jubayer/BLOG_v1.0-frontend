@@ -41,7 +41,7 @@
     height: 150px;
     object-fit: cover;
 
-    background-image: url('../../static/blank-profile.png');
+    background-image: url('../../static/imgs/blank-profile.png');
     background-position: center;
     background-size: cover;
 

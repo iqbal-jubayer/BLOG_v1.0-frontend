@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import './Alert.css'
 
 const Alert = (props) => {
+  
   useEffect(() => {
     const alert = document.getElementById('Alert');
     if (props.active) {

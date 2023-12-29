@@ -10,6 +10,7 @@ const RightSection = (props) => {
   const [followed, setFollowed] = useState(null)
   const [followers, setFollowers] = useState(0);
 
+  // <--HANDLE FUNCTION
   const HandleFollow = async () => {
     if (followed) {
       setFollowed(false)
@@ -21,6 +22,7 @@ const RightSection = (props) => {
       console.log("Followed")
     }
   }
+  // HANDLE FUNCTION-->
 
   useEffect(() => {
     if (Object.keys(props.auther).length !== 0) {
@@ -28,7 +30,7 @@ const RightSection = (props) => {
       setFollowers(props.auther.followers.length)
       if (props.auther.followers.includes(props.user._id)) setFollowed(true);
     };
-  }, [props.auther.date,props.auther, props.user._id]);
+  }, [props.auther.date, props.auther, props.user._id]);
 
   return (
     <div className='account-side-section base-bg-2'>
