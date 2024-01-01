@@ -1,0 +1,15 @@
+.del-modal-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.del-modal-form-item {
+    margin: 10px 0;
+}
+
+.del-modal-form-item button{
+    margin: 0 3px;
+}

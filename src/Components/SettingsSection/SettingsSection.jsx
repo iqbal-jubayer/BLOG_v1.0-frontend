@@ -46,15 +46,14 @@ const SettingsSection = () => {
 			setTempUserLoaded(true);
 		}
 
-		setInterval(() => {
-			setIsAlert(false)
-		}, 5000);
+		setInterval(() => setIsAlert(false), 5000);
 
 	}, [user, tempUserLoaded]);
 
 	return (
 		<div className="settings-section base-bg-1">
 			<Alert active={isAlert} msg={alertMsg} />
+
 			<div className="inner-settings-section">
 
 				<div className="settings-item">
@@ -66,7 +65,6 @@ const SettingsSection = () => {
 				<div className="settings-item">
 					<button className="btn">Subscription</button>
 					<button className="btn">Change Password</button>
-					<button className="btn">Delete Account</button>
 				</div>
 
 			</div>

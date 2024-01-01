@@ -7,7 +7,7 @@ const AccountForm = (props) => {
 		<form className='settings-item settings-form' action="POST" onSubmit={props.HandleSubmit}>
 
 			<div className="settings-form-items settings-dp-container">
-				<img src={props.dpURL} alt="DP" />
+				<img src={props.dpURL} alt="" />
 			</div>
 
 			<div className="settings-form-items">

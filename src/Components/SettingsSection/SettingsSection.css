@@ -36,6 +36,11 @@
     object-fit: cover;
     border: 2px solid white;
     border-radius: 250px;
+    display: block;
+    
+    background-image: url('../../static/imgs/blank-profile.png');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .settings-form-items img:hover #img-edit-btn{
